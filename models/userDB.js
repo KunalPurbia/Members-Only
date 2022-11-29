@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-}).then(()=>{
+}).then(() => {
     console.log("Database connection succesful");
-}).catch((e)=>{
+}).catch((e) => {
     console.log("Error occured");
 });
 
@@ -18,8 +18,8 @@ const userShcema = mongoose.Schema({
         type: String,
         required: true
     },
-    admin:{
-        type: Boolean,
+    role: {
+        type: String,
         required: true
     }
 });
@@ -27,7 +27,7 @@ const userShcema = mongoose.Schema({
 const User = mongoose.model('User', userShcema);
 
 const messageSchema = mongoose.Schema({
-    title:{
+    title: {
         type: String,
         required: true
     },
@@ -47,4 +47,7 @@ const messageSchema = mongoose.Schema({
 
 const Message = mongoose.model('Message', messageSchema);
 
-module.exports.mongoose = mongoose.connect;
+module.exports = {
+    User,
+    Message
+};
