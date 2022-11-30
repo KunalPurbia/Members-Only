@@ -9,8 +9,7 @@ router.get('/', userController.getLoginPage);
 
 ///////////////////////////////User Login
 router.post('/', passport.authenticate('local', {
-    failureRedirect: '/login',
-    successRedirect:'/register'
+    failureRedirect: '/login'
 }), userController.postLogin);
 
 module.exports = router;

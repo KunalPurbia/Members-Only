@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const saltRounds = 5;
 const {
     User
-} = require('../models/userDB');
+} = require('../config/database');
 
 module.exports.getHomePage = function (req, res, next) {
     res.render("index", {
@@ -18,7 +18,7 @@ module.exports.postRegister = function (req, res, next) {
     bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
         const newUser = new User({
             role: req.body.role,
-            email: req.body.email,
+            username: req.body.username,
             password: hash
         }).save(err => {
             if (err) return next(err);

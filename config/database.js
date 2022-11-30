@@ -10,7 +10,7 @@ mongoose.connect(process.env.MONGO_URL, {
 });
 
 const userShcema = mongoose.Schema({
-    email: {
+    username: {
         type: String,
         required: true
     },
