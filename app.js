@@ -4,6 +4,9 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser')
 const path = require('path');
 
+////////////////////////SETTING PATH FOR PUBLIC FOLDER
+const publicPath = path.join(__dirname, 'public')
+
 ////////////////////////REQUIRING ALL ROUTES
 const indexRouter = require("./routes/indexRoutes");
 const registerRouter = require("./routes/registerRoutes");
@@ -23,6 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({
     extended: false
 }));
+app.use(express.static(publicPath));
 app.use(cookieParser());
 
 ////////////////////////SETTING SESSION

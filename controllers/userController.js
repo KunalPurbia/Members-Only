@@ -4,10 +4,30 @@ const {
     User
 } = require('../config/database');
 
+const messageData = {};
+messageData.id = "123";
+messageData.author = "Kunal Purbia";
+messageData.date = new Date();
+messageData.message = "Hi I am Kunal Purbia"
+
+const messages = [messageData];
+
 module.exports.getHomePage = function (req, res, next) {
-    res.render("index", {
-        user: false
-    });
+    if(req.user){
+        res.render("index", {
+            user: false,
+            member: false,
+            admin: false,
+            messages: messages
+        });
+    } else{
+        res.render("index", {
+            user: true,
+            member: false,
+            admin: false,
+            messages: messages
+        });
+    }
 }
 
 module.exports.getRegisterPage = function (req, res, next) {

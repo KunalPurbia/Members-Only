@@ -5,23 +5,116 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HOMEPAGE</title>
+    <link rel="stylesheet" href="/styles/style.css">
 </head>
 
-<body>
-    <% if(!user){ %>
-        <center>
-            <h1>Welcome</h1>
+<% if(user) { %>
+    <body>
+        <div class="navbar">
+            <img src="/images/OIP.jpg" alt="logo">
+            <h3>THE INFINITE DEN</h3>
             <span>
-                <a href="/register">REGISTER || </a>
-                <a href="/login">LOGIN</a>
+                <a href="/create">CREATE MESSAGE</a>
+                <a href="/logout">LOGOUT</a>
             </span>
-        </center>
-    <% } else{ %>
-            <center>
-                <h1>User</h1>
-            </center>
-        <% } %>
-</body>
+        </div>
+        <div id="displayBox">
+            <% messages.forEach((message)=>{ %>
+                <div class="message">
+                    <h3>Message</h3>
+                    <p>Hey this is my demo message</p>
+                </div>
+                <% }) %>
+        </div>
+    </body>
+    <% } else if(member){%>
+        <body>
+            <div class="navbar">
+                <img src="/images/OIP.jpg" alt="logo">
+                <h3>THE INFINITE DEN</h3>
+                <span>
+                    <a href="/create">CREATE MESSAGE</a>
+                    <a href="/logout">LOGOUT</a>
+                </span>
+            </div>
+            <div id="displayBox">
+                <% messages.forEach((message)=>{ %>
+                    <div class="message">
+                        <span>
+                            <h3>Author: </h3>
+                            <p>DEMO USER</p>
+                        </span>
+                        <span>
+                            <h3>DATE: </h3>
+                            <p>DEMO DATE</p>
+                        </span>
+                        <span>
+                            <h3>MESSAGE: </h3>
+                            <p>DEMO MESSAGE</p>
+                        </span>
+                    </div>
+                    <% }) %>
+            </div>
+        </body>
+        <% } else if(admin){%>
+            <body>
+                <div class="navbar">
+                    <img src="/images/OIP.jpg" alt="logo">
+                    <h3>THE INFINITE DEN</h3>
+                    <span>
+                        <a href="/create">CREATE MESSAGE</a>
+                        <a href="/logout">LOGOUT</a>
+                    </span>
+                </div>
+                <div id="displayBox">
+                    <% messages.forEach((message)=>{ %>
+                        <div class="message">
+                            <form action="/delete/:id" method="POST">
+                                <h3>Author: </h3>
+                                <p>
+                                    <%= message.author %>
+                                </p>
+                                <h3>DATE: </h3>
+                                <p>
+                                    <%= message.date %>
+                                </p>
+                                <h3>MESSAGE: </h3>
+                                <p>
+                                    <%= message.message %>
+                                </p>
+                                <input type="submit" value="DELETE">
+                            </form>
+                        </div>
+                        <% }) %>
+                </div>
+            </body>
+            <% } else { %>
+                <body>
+                    <div class="navbar">
+                        <img src="/images/OIP.jpg" alt="logo">
+                        <h3>THE INFINITE DEN</h3>
+                        <span>
+                            <a href="/regiter">REGISTER</a>
+                            <a href="/login">LOGIN</a>
+                        </span>
+                    </div>
+                    <div id="displayBox">
+                        <% messages.forEach((message)=>{ %>
+                            <div class="message">
+                                <h3>Message</h3>
+                                <p>Hey this is my demo message</p>
+                            </div>
+                            <% }) %>
+                    </div>
+                </body>
+                <% } %>
+                    <footer>
+                        <center>
+                            <h3>
+                                COPYRIGHT ©KUNAL PURBIA
+                            </h3>
+                        </center>
+                    </footer>
 
 </html>
