@@ -34,9 +34,9 @@ module.exports.getLoginPage = function (req, res, next) {
 }
 
 module.exports.postLogin = function (req, res, next) {
-    console.log("Hello");
-    console.log(req.body);
-    res.send("Hello")
+    res.render("index", {
+        user: true
+    })
 }
 
 module.exports.getUserPage = function (req, res, next) {

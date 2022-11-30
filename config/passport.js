@@ -7,22 +7,23 @@ const {
 
 passport.use(new LocalStrategy(
     function (username, password, done) {
-        console.log(username);
         User.findOne({
                 username: username
             })
             .then((user) => {
                 if (!user) {
                     return done(null, false)
+                } else{
+                    bcrypt.compare(password, user.password, (err, result)=>{
+                        if(err){
+                            throw err;
+                        } else if(result === false){
+                            return done(null, false);
+                        } else{
+                            return done(null, user)
+                        }
+                    })
                 }
-                bcrypt.compare(password, user.password, (err, result) => {
-                    if (err) throw err;
-                    else {
-                        console.log(result);
-                        console.log(user)
-                        return done(null, user)
-                    }
-                })
             })
             .catch((err)=>{
                 done(err);
