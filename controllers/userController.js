@@ -24,7 +24,7 @@ module.exports.getHomePage = function (req, res, next) {
         res.render("index", {
             user: false,
             member: false,
-            admin: true,
+            admin: false,
             messages: messages
         });
     }
@@ -37,13 +37,16 @@ module.exports.getRegisterPage = function (req, res, next) {
 module.exports.postRegister = function (req, res, next) {
     bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
         const newUser = new User({
-            role: req.body.role,
+            fullname: req.body.fullname,
             username: req.body.username,
             password: hash
         }).save(err => {
             if (err) return next(err);
             else {
-                res.redirect("/login")
+                res.render("index", {
+                    user: true,
+                    messages: messages
+                })
             }
         })
     })

@@ -10,6 +10,10 @@ mongoose.connect(process.env.MONGO_URL, {
 });
 
 const userShcema = mongoose.Schema({
+    fullname: {
+        type: String,
+        required: true
+    },
     username: {
         type: String,
         required: true
@@ -18,9 +22,11 @@ const userShcema = mongoose.Schema({
         type: String,
         required: true
     },
-    role: {
-        type: String,
-        required: true
+    member: {
+        type: Boolean,
+    },
+    admin: {
+        type: Boolean,
     }
 });
 
@@ -39,7 +45,11 @@ const messageSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    user: {
+    username: {
+        type: String,
+        required: true
+    },
+    useremail: {
         type: String,
         required: true
     }
