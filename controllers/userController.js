@@ -5,7 +5,7 @@ const {
 } = require('../config/database');
 
 const messageData = {};
-messageData.id = "123";
+messageData._id = "123";
 messageData.author = "Kunal Purbia";
 messageData.date = new Date();
 messageData.message = "Hi I am Kunal Purbia"
@@ -22,9 +22,9 @@ module.exports.getHomePage = function (req, res, next) {
         });
     } else{
         res.render("index", {
-            user: true,
+            user: false,
             member: false,
-            admin: false,
+            admin: true,
             messages: messages
         });
     }

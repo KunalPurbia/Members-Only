@@ -70,7 +70,7 @@
                 <div id="displayBox">
                     <% messages.forEach((message)=>{ %>
                         <div class="message">
-                            <form action="/delete/:id" method="POST">
+                            <form action="/delete/<%= message._id %>" method="POST">
                                 <h3>Author: </h3>
                                 <p>
                                     <%= message.author %>
