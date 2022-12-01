@@ -7,6 +7,12 @@ router.get('/', userController.getHomePage);
 
 router.post('/delete', (req, res)=>{
     res.send("HELLO")
-})
+});
+
+router.get('/create', userController.getMessageForm);
+
+router.post('/message', userController.postMessage);
+
+router.get('/logout', userController.logoutUser)
 
 module.exports = router;

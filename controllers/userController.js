@@ -1,26 +1,22 @@
 const bcrypt = require('bcryptjs');
 const saltRounds = 5;
 const {
-    User
+    User,
+    Message
 } = require('../config/database');
 
-const messageData = {};
-messageData._id = "123";
-messageData.author = "Kunal Purbia";
-messageData.date = new Date();
-messageData.message = "Hi I am Kunal Purbia"
+const messageDB = require('../models/messageModel')
 
-const messages = [messageData];
-
-module.exports.getHomePage = function (req, res, next) {
-    if(req.user){
+module.exports.getHomePage = async function (req, res, next) {
+    const messages = await messageDB.getMessages();
+    if (req.user) {
         res.render("index", {
-            user: false,
+            user: true,
             member: false,
             admin: false,
             messages: messages
         });
-    } else{
+    } else {
         res.render("index", {
             user: false,
             member: false,
@@ -41,12 +37,9 @@ module.exports.postRegister = function (req, res, next) {
             username: req.body.username,
             password: hash
         }).save(err => {
-            if (err) return next(err);
+            if (err) throw err;
             else {
-                res.render("index", {
-                    user: true,
-                    messages: messages
-                })
+                res.redirect("/login")
             }
         })
     })
@@ -57,11 +50,39 @@ module.exports.getLoginPage = function (req, res, next) {
 }
 
 module.exports.postLogin = function (req, res, next) {
-    res.render("index", {
-        user: true
-    })
+    res.redirect("/")
 }
 
 module.exports.getUserPage = function (req, res, next) {
     res.render("user");
+}
+
+module.exports.getMessageForm = function (req, res, next) {
+    res.render('messageForm')
+}
+
+module.exports.postMessage = function (req, res, next) {
+    const data = {};
+    data.title = req.body.title;
+    data.message = req.body.message;
+    data.date = new Date().toDateString();
+    data.username = req.user.fullname;
+    data.useremail = req.user.username;
+    new Message(data).save((err) => {
+        if (err) {
+            res.redirect("/login");
+        } else {
+            res.redirect("/");
+        }
+    })
+}
+
+module.exports.logoutUser = (req, res, next) => {
+    req.logout((err) => {
+        if (err) {
+            throw err;
+        } else {
+            res.redirect("/")
+        }
+    })
 }

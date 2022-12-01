@@ -24,9 +24,11 @@ const userShcema = mongoose.Schema({
     },
     member: {
         type: Boolean,
+        default: false
     },
     admin: {
         type: Boolean,
+        default: false
     }
 });
 
@@ -41,7 +43,7 @@ const messageSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    time: {
+    date: {
         type: String,
         required: true
     },

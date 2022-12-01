@@ -12,9 +12,10 @@
 <% if(user) { %>
     <body>
         <div class="navbar">
-            <img src="/images/OIP.jpg" alt="logo">
+            <a href="/"><img src="/images/OIP.jpg" alt="logo"></a>
             <h3>THE INFINITE DEN</h3>
             <span>
+                <a href="/membership">GET MEMBERSHIP</a>
                 <a href="/create">CREATE MESSAGE</a>
                 <a href="/logout">LOGOUT</a>
             </span>
@@ -23,7 +24,7 @@
             <% messages.forEach((message)=>{ %>
                 <div class="message">
                     <h3>Message</h3>
-                    <p>Hey this is my demo message</p>
+                    <p><%= message.message %></p>
                 </div>
                 <% }) %>
         </div>
@@ -31,7 +32,7 @@
     <% } else if(member){%>
         <body>
             <div class="navbar">
-                <img src="/images/OIP.jpg" alt="logo">
+                <a href="/"><img src="/images/OIP.jpg" alt="logo"></a>
                 <h3>THE INFINITE DEN</h3>
                 <span>
                     <a href="/create">CREATE MESSAGE</a>
@@ -43,15 +44,15 @@
                     <div class="message">
                         <span>
                             <h3>Author: </h3>
-                            <p>DEMO USER</p>
+                            <p><%= message.username %></p>
                         </span>
                         <span>
                             <h3>DATE: </h3>
-                            <p>DEMO DATE</p>
+                            <p><%= message.date %></p>
                         </span>
                         <span>
                             <h3>MESSAGE: </h3>
-                            <p>DEMO MESSAGE</p>
+                            <p><%= message.message %></p>
                         </span>
                     </div>
                     <% }) %>
@@ -60,7 +61,7 @@
         <% } else if(admin){%>
             <body>
                 <div class="navbar">
-                    <img src="/images/OIP.jpg" alt="logo">
+                    <a href="/"><img src="/images/OIP.jpg" alt="logo"></a>
                     <h3>THE INFINITE DEN</h3>
                     <span>
                         <a href="/create">CREATE MESSAGE</a>
@@ -92,7 +93,7 @@
             <% } else { %>
                 <body>
                     <div class="navbar">
-                        <img src="/images/OIP.jpg" alt="logo">
+                        <a href="/"><img src="/images/OIP.jpg" alt="logo"></a>
                         <h3>THE INFINITE DEN</h3>
                         <span>
                             <a href="/register">REGISTER</a>
@@ -103,7 +104,7 @@
                         <% messages.forEach((message)=>{ %>
                             <div class="message">
                                 <h3>Message</h3>
-                                <p>Hey this is my demo message</p>
+                                <p><%= message.message %></p>
                             </div>
                             <% }) %>
                     </div>
