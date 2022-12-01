@@ -4,10 +4,10 @@ const userController = require('../controllers/userController');
 // const passport = require('../services/passport/passport');
 const passport = require('passport')
 
-///////////////////////////////Getting Login Page
+//////////////////////////////////////////////////////////GETTING FORM FOR LOGIN
 router.get('/', userController.getLoginPage);
 
-///////////////////////////////User Login
+//////////////////////////////////////////////////////////POSTING LOGIN FORM TO LOG IN USER
 router.post('/', passport.authenticate('local', {
     failureRedirect: '/register'
 }), userController.postLogin);

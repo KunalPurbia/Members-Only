@@ -6,14 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOMEPAGE</title>
-    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 
 <% if(user) { %>
-
     <body>
         <div class="navbar">
-            <a href="/"><img src="/images/OIP.jpg" alt="logo"></a>
+            <a href="/"><img src="/images/logo.jpg" alt="logo"></a>
             <h3>THE INFINITE DEN</h3>
             <span>
                 <a href="/membership">GET MEMBERSHIP</a>
@@ -36,11 +35,11 @@
                 <% }) %>
         </div>
     </body>
-    <% } else if(member){%>
 
+    <% } else if(member){%>
         <body>
             <div class="navbar">
-                <a href="/"><img src="/images/OIP.jpg" alt="logo"></a>
+                <a href="/"><img src="/images/logo.jpg" alt="logo"></a>
                 <h3>THE INFINITE DEN</h3>
                 <span>
                     <a href="/create">CREATE MESSAGE</a>
@@ -63,7 +62,6 @@
                         <p>
                             <%= message.title %>
                         </p>
-
                         <h3>MESSAGE: </h3>
                         <p>
                             <%= message.message %>
@@ -73,11 +71,11 @@
                     <% }) %>
             </div>
         </body>
-        <% } else if(admin){%>
 
+        <% } else if(admin){%>
             <body>
                 <div class="navbar">
-                    <a href="/"><img src="/images/OIP.jpg" alt="logo"></a>
+                    <a href="/"><img src="/images/logo.jpg" alt="logo"></a>
                     <h3>THE INFINITE DEN</h3>
                     <span>
                         <a href="/create">CREATE MESSAGE</a>
@@ -110,11 +108,11 @@
                         <% }) %>
                 </div>
             </body>
-            <% } else { %>
 
+            <% } else { %>
                 <body>
                     <div class="navbar">
-                        <a href="/"><img src="/images/OIP.jpg" alt="logo"></a>
+                        <a href="/"><img src="/images/logo.jpg" alt="logo"></a>
                         <h3>THE INFINITE DEN</h3>
                         <span>
                             <a href="/register">REGISTER</a>
