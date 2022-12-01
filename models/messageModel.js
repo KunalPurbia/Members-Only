@@ -12,3 +12,15 @@ module.exports.getMessages = () =>{
         })
     })
 }
+
+module.exports.saveMessage = (data) =>{
+    Message(data).save(err=>{
+        if(err) throw err;
+    })
+}
+
+module.exports.deleteMessage = (id)=>{
+    Message.deleteOne({_id: id}, (err)=>{
+        if(err) throw err;
+    })
+}

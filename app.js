@@ -11,7 +11,6 @@ const publicPath = path.join(__dirname, 'public')
 const indexRouter = require("./routes/indexRoutes");
 const registerRouter = require("./routes/registerRoutes");
 const loginRouter = require("./routes/loginRoutes");
-const userRouter = require("./routes/userRoutes");
 const passport = require('passport');
 
 ////////////////////////CREATING EXPRESS APPLICATION
@@ -50,7 +49,6 @@ app.use(passport.session());
 app.use("/", indexRouter);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
-app.use("/user", userRouter);
 
 ////////////////////////LISTENING TO PORT
 app.listen(process.env.PORT, ()=>{

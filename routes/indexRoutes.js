@@ -13,6 +13,12 @@ router.get('/create', userController.getMessageForm);
 
 router.post('/message', userController.postMessage);
 
+router.get('/membership', userController.getMembershipForm);
+
+router.post('/membership', userController.updateMembership);
+
+router.post('/delete/:id', userController.deleteMessage)
+
 router.get('/logout', userController.logoutUser)
 
 module.exports = router;

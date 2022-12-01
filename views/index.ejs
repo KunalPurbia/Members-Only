@@ -10,6 +10,7 @@
 </head>
 
 <% if(user) { %>
+
     <body>
         <div class="navbar">
             <a href="/"><img src="/images/OIP.jpg" alt="logo"></a>
@@ -23,13 +24,20 @@
         <div id="displayBox">
             <% messages.forEach((message)=>{ %>
                 <div class="message">
+                    <h3>TITLE: </h3>
+                    <p>
+                        <%= message.title %>
+                    </p>
                     <h3>Message</h3>
-                    <p><%= message.message %></p>
+                    <p>
+                        <%= message.message %>
+                    </p>
                 </div>
                 <% }) %>
         </div>
     </body>
     <% } else if(member){%>
+
         <body>
             <div class="navbar">
                 <a href="/"><img src="/images/OIP.jpg" alt="logo"></a>
@@ -42,23 +50,31 @@
             <div id="displayBox">
                 <% messages.forEach((message)=>{ %>
                     <div class="message">
-                        <span>
-                            <h3>Author: </h3>
-                            <p><%= message.username %></p>
-                        </span>
-                        <span>
-                            <h3>DATE: </h3>
-                            <p><%= message.date %></p>
-                        </span>
-                        <span>
-                            <h3>MESSAGE: </h3>
-                            <p><%= message.message %></p>
-                        </span>
+                        <h3>Author: </h3>
+                        <p>
+                            <%= message.username %>
+                        </p>
+                        <h3>DATE: </h3>
+                        <p>
+                            <%= message.date %>
+                        </p>
+
+                        <h3>TITLE: </h3>
+                        <p>
+                            <%= message.title %>
+                        </p>
+
+                        <h3>MESSAGE: </h3>
+                        <p>
+                            <%= message.message %>
+                        </p>
+
                     </div>
                     <% }) %>
             </div>
         </body>
         <% } else if(admin){%>
+
             <body>
                 <div class="navbar">
                     <a href="/"><img src="/images/OIP.jpg" alt="logo"></a>
@@ -74,11 +90,15 @@
                             <form action="/delete/<%= message._id %>" method="POST">
                                 <h3>Author: </h3>
                                 <p>
-                                    <%= message.author %>
+                                    <%= message.username %>
                                 </p>
                                 <h3>DATE: </h3>
                                 <p>
                                     <%= message.date %>
+                                </p>
+                                <h3>TITLE: </h3>
+                                <p>
+                                    <%= message.title %>
                                 </p>
                                 <h3>MESSAGE: </h3>
                                 <p>
@@ -91,6 +111,7 @@
                 </div>
             </body>
             <% } else { %>
+
                 <body>
                     <div class="navbar">
                         <a href="/"><img src="/images/OIP.jpg" alt="logo"></a>
@@ -103,8 +124,14 @@
                     <div id="displayBox">
                         <% messages.forEach((message)=>{ %>
                             <div class="message">
+                                <h3>TITLE: </h3>
+                                <p>
+                                    <%= message.title %>
+                                </p>
                                 <h3>Message</h3>
-                                <p><%= message.message %></p>
+                                <p>
+                                    <%= message.message %>
+                                </p>
                             </div>
                             <% }) %>
                     </div>
